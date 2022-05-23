@@ -8,7 +8,7 @@ clone git@github.com:bernardjbs/Project-2.git
 
 ### How to move to a new branch for new work (do before adding adding new info to staging area once the repo is clones/pulled)
 ```
-git checkout -b [branch_name "mon_blablabla"]
+git checkout -b branch_name
 ```
 
 ### Subsequent updates
