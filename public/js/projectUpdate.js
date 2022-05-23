@@ -1,0 +1,2 @@
+// These script files handle front end requests from the user to make calls to our controllers to perform certain actions with the database and return that formattred information back to the view for the user to see.
+// Such as button clicks to login, create a new medication, update a medication, delete a medication, add additions to that medication that we haven't added, etc.
