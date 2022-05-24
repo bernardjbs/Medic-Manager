@@ -4,7 +4,7 @@ const medsData = [
     // Specify table information (according to models)
     {
         // Name column
-        "name": "Penicillen",
+        "name": "Penicillin",
         // Price column
         "price": 1.55,
         // Expiry date column
