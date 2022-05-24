@@ -6,7 +6,7 @@ const sequelize = require('../config/connection');
 // Create model through constructor
 class Tags extends Model {}
 
-// Tags will a reference between additions created by the user, the user this belongs too, and and any medications the users has information inserted into this column for
+// Tags will a reference between additions created by the user, the user this belongs too, and any medications the users has information inserted into this column for
 
 // EG 
 // User: Dave (id: 1)
