@@ -1,6 +1,6 @@
 // Used to create relationships between tables
 
-// Example Models (tables) imported for routing for use at end points (including for seeding them and extracting/imputting info)
+// Example Models (tables) imported for routing for use at end points (including for seeding them and extracting/imputing info)
 const Users = require('./Users');
 const Medications = require('./Medications');
 const Additions = require('./Additions');
@@ -26,7 +26,7 @@ Additions.belongsTo(Users, {
   foreignKey: 'user_id',
 });
 
-// Users will make many additions to their pharmacutical information
+// Users will make many additions to their pharmaceutical information
 Users.hasMany(Tags, {
   foreignKey: 'user_id',
 });
