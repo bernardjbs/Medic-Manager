@@ -1,0 +1,15 @@
+/* Choose our website color scheme */
+/* Add any custom CSS */
+/* Loaded into 'index.html' as the last CSS file to render last */
+/* For universal CSS only. Inidividual pages should be separated into their own CSS file and added to index.html after this one. */
+:root {
+  --primary: #3d5852;
+  --secondary: #86938f;
+  --tertiary: #5e877f;
+  --quatrinary: #6c6b67;
+  --light: #e3e4e3;
+  --dark: #182c23;
+  --error: rgb(228, 46, 1);
+  --border-radius: 0.3rem;
+}
+

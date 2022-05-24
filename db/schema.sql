@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS reminder_db;
+
+CREATE DATABASE reminder_db;

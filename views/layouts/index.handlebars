@@ -1,0 +1,45 @@
+{{!-- The homepage that will be render on any page the user visits. So basically the header and footer and any info we want on any page the user visits --}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/reset">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <title>RemindMe</title>
+</head>
+<body>
+    <header>
+
+        {{!-- The Navigation Bar --}}
+        <nav>
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link active" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/dashboard">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                {{!-- Depending on session status, login or logout is rendered. Session status (loggedIn status) should be passed to each of the views for authentication --}}
+                {{#if loggedIn}}
+                <button class="nav-link" id="logout">Logout</button>
+                {{else}}
+                <a class="nav-link" href="/login">Login</a>
+                {{/if}}
+                </li>
+                </ul>
+        </nav>
+        <div id="logo">RemindMe</div>
+    </header>
+    <main>
+        {{{body}}}
+    </main>
+    
+    {{!-- If the user is logged in, the script from our public file is loaded in to logout --}}
+    {{#if loggedIn}}
+    <script src="/js/logout.js"></script>
+    {{/if}}
+</body>
+</html>
