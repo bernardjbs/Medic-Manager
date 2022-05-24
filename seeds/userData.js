@@ -26,3 +26,5 @@ const galleryData = [
 const seedUsers = () => Users.bulkCreate(galleryData);
 
 module.exports = seedUsers;
+
+// If Emailer npm used will we be adding "email" as a user input in this file?
