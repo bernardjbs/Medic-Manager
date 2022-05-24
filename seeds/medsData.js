@@ -17,3 +17,5 @@ const medsData = [
 const seedMeds = () => Medications.bulkCreate(medsData);
 
 module.exports = seedMeds;
+
+// Possible to allow user to upload a photo of the actual medication and purchase receipt (can aid tax purposes)? ==> more techy options to consider later on
