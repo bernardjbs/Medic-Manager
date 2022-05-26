@@ -39,7 +39,7 @@ const AdditionData = [
   {
     medication_id: 3,
     label: 'Purpose',
-    value: 'Migrane',
+    value: 'Migraine',
   },
   {
     medication_id: 4,
