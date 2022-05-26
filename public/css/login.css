@@ -1,0 +1,49 @@
+
+/* Main container */
+.login-main-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+/* Cards */
+
+.login-main-container .page-title {
+    text-align: center;
+    font-size: 1.7rem;
+    margin-bottom: 5px;
+}
+
+.login-main-container .form {
+    border: 1px solid black;
+    padding: 1rem;
+}
+
+.login-main-container .form-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.login-main-container .form * {
+    margin-top: .6rem;
+}
+
+.login-main-container .label {
+    margin-right: 5px;
+}
+
+/* Button */
+.login-main-container button {
+    background: none;
+    border: 1px solid black;
+    padding: .1rem .5rem;
+    box-shadow: 0 0 1px 1px black;
+    font-size: 1.3rem;
+    cursor: pointer;
+}.login-main-container button:hover {
+    box-shadow: none;
+}.login-main-container button:active {
+    box-shadow: 0 0 1px 1px black inset;
+}
