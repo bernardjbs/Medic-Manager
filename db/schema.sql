@@ -1,3 +1,3 @@
-DROP DATABASE IF EXISTS reminder_db;
+DROP DATABASE IF EXISTS medic_db;
 
-CREATE DATABASE reminder_db;
+CREATE DATABASE medic_db;
