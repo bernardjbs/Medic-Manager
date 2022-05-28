@@ -11,7 +11,7 @@ const medicationData = [
     user_id: 1,
   },
   {
-    med_name: 'Neurofen',
+    med_name: 'Nurofen',
     med_price: 90.0,
     med_type: 'Pain Killer', 
     med_date_acquired: Date('21 June 2022'),
@@ -29,7 +29,7 @@ const medicationData = [
     user_id: 4,
   },
   {
-    med_name: 'Claritin',
+    med_name: 'Claratyne',
     med_price: 12.99,
     med_type: 'Alergic Relief', 
     med_date_acquired: Date('22 December 2021'),
@@ -50,3 +50,5 @@ const medicationData = [
 const seedMedications = () => Medication.bulkCreate(medicationData);
 
 module.exports = seedMedications;
+
+//used common BRAND names of over the counter medications (as opposed to generic names)
