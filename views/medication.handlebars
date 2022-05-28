@@ -1,0 +1,32 @@
+  <section class="medication-section">
+    <form class="add-medication">
+      <div class="form-group">
+        <label for="med_name">Medication Name:</label>
+
+        {{!-- The value operation: update is added at controller before passing the data for rendering for Medication.update--}}
+        {{!-- Delete button will be added next to 'getAllMedicines' in the '/medicines' route --}}
+
+        <input class="form-input" type="text" id="med_name" {{!-- {{if operation==update value=med_name}} --}} name="med_name" /> 
+      </div>
+      <div class="form-group">
+        <label for="med_price">Medication Price:</label>
+        <input class="form-input" type="text" id="med_price" {{!-- {{if operation==update value=med_price}} --}} name="med_price" />
+      </div>
+      <div class="form-group">
+        <label for="med_type">Medication Type:</label>
+        <input class="form-input" type="text" id="med_type" {{!-- {{if operation==update value=med_type}} --}} name="med_type" />
+      </div>
+      <div class="form-group">
+        <label for="med_date_acquired">Date Acquired:</label>
+        <input class="form-input" type="text" id="med_date_acquired" {{!-- {{if operation==update value=med_date_acquired}} --}} name="med_date_acquired" />
+      </div>
+      <div class="form-group">
+        <label for="med_script_renewed">Script Renewed:</label>
+        <input class="form-input" type="text" id="med_script_renewed" {{!-- {{if operation==update value=med_script_renewed}} --}} name="med_script_renewed" />
+      </div>
+      <div class="form-group">
+        <label for="med_expiry_date">Expiry Date:</label>
+        <input class="form-input" type="text" id="med_expiry_date" {{!-- {{if operation==update value=med_expiry_date}} --}} name="med_expiry_date" />
+      </div>
+    </form>
+  </section>
