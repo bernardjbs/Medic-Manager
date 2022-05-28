@@ -16,16 +16,32 @@ Medication.init(
       primaryKey: true,
       autoIncrement: true
     },
-    medication_name: {
-      type: DataTypes.STRING,
-      allowNull: false
-    }, 
-    price: {
+    med_price: {
       type: DataTypes.DECIMAL,
       allowNull: false, 
       validate: {
         isDecimal: true
       }
+    }, 
+    med_name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }, 
+    med_type: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }, 
+    med_date_acquired: {
+      type: DataTypes.DATE,
+      allowNull: false
+    }, 
+    med_script_renewed: {
+      type: DataTypes.DATE,
+      allowNull: true
+    }, 
+    med_exp_date: {
+      type: DataTypes.DATE,
+      allowNull: false
     }, 
     user_id: {
       type: DataTypes.INTEGER,
