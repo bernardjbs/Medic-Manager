@@ -2,6 +2,7 @@
 const { Model, DataTypes } = require('sequelize');
 // import our database connection from config.js
 const sequelize = require('../config/connection');
+const EmailMessage = require('./EmailMessage');
 const User = require('./User');
 
 // Initialize Medication model (table) by extending off Sequelize's Model class
@@ -16,17 +17,17 @@ Medication.init(
       primaryKey: true,
       autoIncrement: true
     },
+    med_name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     med_price: {
       type: DataTypes.DECIMAL,
       allowNull: false, 
       validate: {
         isDecimal: true
-      }
-    }, 
-    med_name: {
-      type: DataTypes.STRING,
-      allowNull: false
-    }, 
+      },
+    },  
     med_type: {
       type: DataTypes.STRING,
       allowNull: false
@@ -48,8 +49,8 @@ Medication.init(
       references: {
         model: User, 
         key: 'id'
-      }
-    }
+      },
+    },
   },
   {
     sequelize,

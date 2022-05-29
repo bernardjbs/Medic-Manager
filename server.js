@@ -3,6 +3,7 @@ const express = require('express'); // Setup server
 const session = require('express-session'); // Setup sessions
 const exphbs = require('express-handlebars'); // Use handlebars with express
 const SequelizeStore = require('connect-session-sequelize')(session.Store); // Use sequelize to handle sessions
+const { checkExpiry } = require('./utils/checkExpiry'); // Will check expiry date for medication and send an email notification
 
 const routes = require('./controllers'); // bring routes in from the controllers
 const sequelize = require('./config/connection'); // Setup connection to be used

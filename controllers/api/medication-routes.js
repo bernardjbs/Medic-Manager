@@ -12,7 +12,7 @@ router.post('/', withAuth, async (req, res) => {
   try {
     const newMedication = await Medication.create({
       ...req.body,
-      user_id: req.secure.user_id
+      user_id: req.session.user_id
     });
     res.status(200).json(newMedication);
   } catch (err) {

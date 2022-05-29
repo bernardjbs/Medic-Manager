@@ -12,10 +12,25 @@ User.init(
       primaryKey: true,
       autoIncrement: true
     },
-    username: {
+    user_email: {
       type: DataTypes.STRING,
       allowNull: false
-    }
+    }, 
+    user_first_name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }, 
+    user_last_name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }, 
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [8]
+      }
+    },
   },
   {
     sequelize,
