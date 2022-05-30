@@ -1,9 +1,20 @@
-{{!-- The page that logged in users can use to add table rows or additional information, update their rows, and so on --}}
+<section id="addMed">Add New Medication</section>
+<section id="meds-table-wrapper">
+    <table>
+        <tr id="table-headers">
+            <th>Name</th>
+            <th>Price</th>
+            <th>Type</th>
+            <th>Date Aquired</th>
+            <th>Script Renewed</th>
+            <th>Expiry Date</th>
+        </tr>
+        {{!-- Render all medications --}}
+        {{#each userMeds}}
+        {{> userItems}}
+        {{/each}}
+    </table>
+    
+</section>
 
-{{!-- Imports this specific users information about the tables and rows they have created for the reminders on items they want --}}
-
-{{!-- <div id="reminderItems"> --}}
-{{!-- {{#each item}} --}}
-{{!-- {{> userItems}} --}}
-{{!-- {{/each}} --}}
-{{!-- </div> --}}
+<script src="/js/formatDBMeds.js"></script>
