@@ -1,20 +1,29 @@
 const router = require('express').Router();
 
 // Import any Models that are intended to be used on this page
-const { Users } = require('../../models');
+const { User } = require('../../models');
 
 // End point POST operation to create a new user, using the User model (table)
 router.post('/', async (req, res) => {
   try {
 
-    const dbUsersData = await Users.create({
-      username: req.body.username,
-      password: req.body.password,
+    const dbUsersData = await User.create({
+      user_email: req.body.email,
+      user_first_name: req.body.firstName,
+      user_last_name: req.body.lastName,
+      password: req.body.password
+    });
+
+    const dbUserData = await User.findOne({
+      where: {
+        user_email: req.body.email,
+      },
     });
 
     req.session.save(() => {
       req.session.loggedIn = true;
-      req.session.username = req.body.username
+      req.session.username = dbUserData.user_first_name;
+      req.session.id = dbUserData.id
 
       res.status(200).json(dbUsersData);
       
@@ -28,9 +37,9 @@ router.post('/', async (req, res) => {
 // POST request from user to attempt to login to website once account is created.
 router.post('/login', async (req, res) => {
   try {
-    const dbUserData = await Users.findOne({
+    const dbUserData = await User.findOne({
       where: {
-        username: req.body.username,
+        user_email: req.body.email,
       },
     });
 
@@ -40,19 +49,19 @@ router.post('/login', async (req, res) => {
         .json({ message: 'Incorrect username or password. Please try again!' });
       return;
     }
-
     const validPassword = dbUserData.checkPassword(req.body.password);
-
+    
     if (!validPassword) {
       res
         .status(400)
         .json({ message: 'Incorrect username or password. Please try again!' });
       return;
     }
-
+  
     req.session.save(() => {
       req.session.loggedIn = true;
-      req.session.username = req.body.username;
+      req.session.username = dbUserData.user_first_name;
+      req.session.user_id = dbUserData.id
 
       res
         .status(200)
