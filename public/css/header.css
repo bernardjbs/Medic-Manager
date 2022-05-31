@@ -1,0 +1,71 @@
+/*  font-family: 'Bebas Neue', cursive;
+font-family: 'Dosis', sans-serif;
+font-family: 'Roboto', sans-serif; */
+
+html { font-size: 62.5%; } 
+body { font-size: 1.4rem; } /* =14px */
+h1   { font-size: 2.4rem; } /* =24px */
+
+:root {
+    --primary: #3d5852;
+    --secondary: #86938f;
+    --tertiary: #5e877f;
+    --quatrinary: #6c6b67;
+    --light: #e3e4e3;
+    --dark: #182c23;
+    --error: rgb(228, 46, 1);
+    /* alternative colours */
+      --purple: #79025B;
+      --pink: #D67AB1;
+      --pastelpink: #E7B1D0;
+      --white: #FDF7FA;
+      --paleblue: #A8DCD9;
+      --yellow: #FFBA08;
+      --blue: #3F88C5;
+      --brightpink: #E43F6F;
+      --midpurple: #BE3E82;
+      --midpink: #F56476;
+      --green: #197278;
+} 
+nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end !important;
+}
+.index-nav {
+    display: flex !important;
+    
+    background-color: var(--tertiary);
+    
+    font-family: 'Bebas Neue', Arial, Helvetica, sans-serif;
+    font-style: var(--white);
+    font-size: 1.4rem;
+  }
+  /* remove bullet points */
+  ul {
+    list-style-type: none;
+    margin-left: 1rem;
+    padding:1.5rem;
+    display: flex;
+    
+}
+/* gap between choice buttons */
+li {
+    margin-top: 0.2rem;
+    padding-left: 1.6rem;
+}
+
+.index-nav {
+    
+    background-color: var(--tertiary);
+   
+    font-family: 'Bebas Neue', Arial, Helvetica, sans-serif;
+    font-style: var(--white);
+    font-size: 1.4rem;
+  }
+
+  #logo {
+      justify-content: center;
+  }
+
+ 
