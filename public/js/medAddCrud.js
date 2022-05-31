@@ -80,11 +80,11 @@ const updateAdditionFormHandler = async (event) => {
 
 document
 .querySelector('#update-medication')
-.addEventListener('click', updateMedFormHandler);  
+?.addEventListener('click', updateMedFormHandler);  
 
 document 
 .querySelector('#add-medication')
-.addEventListener('click', addMedFormHandler);
+?.addEventListener('click', addMedFormHandler);
 
 document 
 .querySelector('.update-Addition')

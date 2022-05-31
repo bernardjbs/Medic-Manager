@@ -7,9 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/css/reset.css">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/login.css">
     <link rel="stylesheet" type="text/css" href="/css/header.css">
-     <link rel="stylesheet" type="text/css" href="/css/homepage.css">
-      <link rel="stylesheet" type="text/css" href="/css/dashboard.css">
+    <link rel="stylesheet" type="text/css" href="/css/homepage.css">
+    <link rel="stylesheet" type="text/css" href="/css/dashboard.css">
+    <link rel="stylesheet" type="text/css" href="/css/medBot.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dosis:wght@200&family=Roboto&display=swap" rel="stylesheet">
@@ -21,18 +23,22 @@
 
         {{!-- The Navigation Bar --}}
         <nav class="index-nav">
-          <a href="#top" class="client_logo" title="MEDIC MANAGER">
-          <img src="./assets/images/medicmanagerlogosmall.PNG" alt="medicmanager" class="medicmanagerlogo"/>
-        </a>
+            <a href="#top" class="client_logo" title="MEDIC MANAGER">
+                <img src="./assets/images/medicmanagerlogosmall.PNG" alt="medicmanager" class="medicmanagerlogo"/>
+            </a>
 
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link active" href="/">Home</a>
+                    <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/dashboard">Dashboard</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" id="botModalToggle">Ask MedBot</a>
+                </li>
+                <li class="nav-item">
+
                 {{!-- Depending on session status, login or logout is rendered. Session status (loggedIn status) should be passed to each of the views for authentication --}}
                 {{#if loggedIn}}
                 <button class="nav-link" id="logout">Logout</button>
@@ -40,14 +46,42 @@
                 <a class="nav-link" href="/login">Login</a>
                 {{/if}}
                 </li>
+                
                 </ul>
         </nav>
-        <div id="logo">MEDIC MANAGER</div>
+
+        {{!-- Bot Modal --}}
+        <div class="modal fade" id="botModal" style="display: none;">
+            <div id="innerBotContainer">
+                <div id="container-robot">
+                    <img id="bot" src="./assets/images/bot.png" height="100px" width="100px" alt="MedBot" title="MedBot">
+                    <span class="re-container" id="re-login-cont"><a href="/login" id="re-login" class="redirect"><img id="loginImg" src="./assets/images/medic.png" height="50px" width="50px" alt="Login" title="Login"></a></span>
+                    
+                    {{!-- Add a tags and hrefs pointing to the location destinations. --}}
+                    
+                    <span class="re-container" id="re-home-cont"><a href="/" id="re-home" class="redirect"><img id="homeImg" src="./assets/images/home.png" height="50px" width="50px" alt="Home" title="Home"></a></span>
+                    
+                    <span class="re-container" id="re-dashboard-cont"><a href="/dashboard" id="re-dashboard" class="redirect"><img id="dashboardImg" src="./assets/images/caution.png" height="50px" width="50px" alt="Dashboard" title="Dashboard"></a></span>
+                    
+                    <span class="re-container" id="re-update-cont"><a href="/medication/1" id="re-update" class="redirect"><img id="subImg" src="./assets/images/pill.png" height="50px" width="50px" alt="New Subscription" title="New Subscription"></a></span>
+                    <div id="botBody">
+                        <p class="botResponse" class="botCommunications"><strong>MedBot:</strong> Hello, I'm MedBot. I'll help you around the site!</p>
+                    </div>
+                    <form id="botChat" action="">
+                        <input id="botQuery" type="text">
+                        <button id="querySubmit" type="submit" style="display: none;">Query Bot</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {{!-- Bot Modal --}}
+
     </header>
     <main>
         {{{body}}}
     </main>
     
+    <script src="/js/medBot.js"></script>
     {{!-- If the user is logged in, the script from our public file is loaded in to logout --}}
     {{#if loggedIn}}
     <script src="/js/logout.js"></script>
