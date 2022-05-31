@@ -25,7 +25,6 @@ router.post('/', async (req, res) => {
     } catch (err) {
         console.log(err);
     }
-
 })
 
 // Creating a route to get data from additions
@@ -61,9 +60,6 @@ router.get('/medication/:id', withAuth, async (req, res) => {
     } catch (err) {
       res.status(500).json(err);
     };
-  });
+});
 
-  router.get('/medication', (req, res) => {
-    res.render('medication')
-})
 module.exports = router;
