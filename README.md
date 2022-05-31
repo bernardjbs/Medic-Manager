@@ -1,5 +1,25 @@
-# Project-2
-##How to contribute
+
+## MEDIC MANAGER ##
+Project 2 - Full Stack Web Application
+
+## Description
+Medic Manager is an interactive system for storage expiry tracking and replacement schedules featuring email reminders and a chatbot.
+
+## Tech Stack
+- Node Js
+- Express Js
+- Restful API
+- Handlebars Js
+- MySQL + Sequelize
+- Get and Post Routes
+- NPM packages
+- Emailer
+- Chatbot
+- MVC (Model View Controller) paradigm
+- Authentication
+- Heroku deployment
+
+## How to contribute:
 
 ### To initially download
 ```
@@ -18,7 +38,6 @@ git add -A (new work on your computer)
 git commit (Description of work)
 git push -u [your branch name]
 ```
-
 
 ## How to run application from command line for testing
 
@@ -102,3 +121,23 @@ Views ->
 ```
 Handlebars templating folder
 ```
+
+## Screenshot
+
+![alt text](https://github.com/)
+
+![alt text](https://github.com/?raw=true)
+
+## Contributors
+Dave Plummer
+Bernard Sin Fat
+Mon Levy
+Chi Doan
+
+## Questions
+Any questions please email info@medicmanager.com 
+(N.B this is a fictional email until official email is created)
+
+## Copyright
+2022 MEDIC MANAGER®️
+

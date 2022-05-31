@@ -9,7 +9,7 @@ h1   { font-size: 2.4rem; } /* =24px */
 :root {
     --primary: #3d5852;
     --secondary: #86938f;
-    --tertiary: #5e877f;
+    --tertiary: #ffffff;
     --quatrinary: #6c6b67;
     --light: #e3e4e3;
     --dark: #182c23;
@@ -18,7 +18,7 @@ h1   { font-size: 2.4rem; } /* =24px */
       --purple: #79025B;
       --pink: #D67AB1;
       --pastelpink: #E7B1D0;
-      --white: #FDF7FA;
+      --white: #FFFFFF;
       --paleblue: #A8DCD9;
       --yellow: #FFBA08;
       --blue: #3F88C5;
@@ -26,6 +26,7 @@ h1   { font-size: 2.4rem; } /* =24px */
       --midpurple: #BE3E82;
       --midpink: #F56476;
       --green: #197278;
+      --grey: #5e877f;
 } 
 nav {
     flex-direction: row;
@@ -61,11 +62,18 @@ li {
    
     font-family: 'Bebas Neue', Arial, Helvetica, sans-serif;
     font-style: var(--white);
-    font-size: 1.4rem;
+    font-size: 2rem;
   }
 
   #logo {
       justify-content: center;
   }
+
+  .medicmanagerlogo {
+      align-items: left;
+      justify-content: left;
+
+  }
+
 
  

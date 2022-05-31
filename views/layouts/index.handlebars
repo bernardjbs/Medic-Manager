@@ -7,13 +7,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/css/reset.css">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
-    <title>RemindMe</title>
+    <link rel="stylesheet" type="text/css" href="/css/header.css">
+     <link rel="stylesheet" type="text/css" href="/css/homepage.css">
+      <link rel="stylesheet" type="text/css" href="/css/dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dosis:wght@200&family=Roboto&display=swap" rel="stylesheet">
+    <title>MEDIC MANAGER</title>
+
 </head>
 <body>
     <header>
 
         {{!-- The Navigation Bar --}}
         <nav class="index-nav">
+          <a href="#top" class="client_logo" title="MEDIC MANAGER">
+          <img src="./assets/images/medicmanagerlogosmall.PNG" alt="medicmanager" class="medicmanagerlogo"/>
+        </a>
+
             <ul class="nav">
                 <li class="nav-item">
                     <a class="nav-link active" href="/">Home</a>
@@ -31,7 +42,7 @@
                 </li>
                 </ul>
         </nav>
-        <div id="logo">RemindMe</div>
+        <div id="logo">MEDIC MANAGER</div>
     </header>
     <main>
         {{{body}}}
