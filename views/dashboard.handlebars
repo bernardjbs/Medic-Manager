@@ -1,20 +1,23 @@
-<section id="addMed">Add New Medication</section>
-<section id="meds-table-wrapper">
-    <table>
-        <tr id="table-headers">
-            <th>Name</th>
-            <th>Price</th>
-            <th>Type</th>
-            <th>Date Aquired</th>
-            <th>Script Renewed</th>
-            <th>Expiry Date</th>
-        </tr>
-        {{!-- Render all medications --}}
-        {{#each userMeds}}
-        {{> userItems}}
-        {{/each}}
-    </table>
-    
-</section>
+<section id="dashboard-container">
+    <section id="addMed" href="#"><a>Add New Medication</a></section>
+    <section id="meds-table-wrapper">
+        <h1 id="title">Your Medications</h1>
+        <table>
+            <tr class="table-row" id="table-headers">
+                <th>Name</th>
+                <th>Price</th>
+                <th>Type</th>
+                <th>Date Aquired</th>
+                <th>Script Renewed</th>
+                <th>Expiry Date</th>
+            </tr>
+            {{!-- Render all medications --}}
+            {{#each userMeds}}
+            {{> userItems}}
+            {{/each}}
+        </table>
+    </section>
+</section> h
+
 
 <script src="/js/formatDBMeds.js"></script>

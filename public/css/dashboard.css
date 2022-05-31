@@ -1,0 +1,47 @@
+
+#dashboard-container {
+    display: flex;
+    margin: 20px 0;
+}
+
+#dashboard-container #addMed {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    padding: 5px 20px;
+    border: 1px solid black;
+    margin: 0 20px;
+    background-color: aquamarine;
+    cursor: pointer;
+}
+#dashboard-container #addMed:hover {
+    box-shadow: 0 0 2px 2px black;
+}#dashboard-container #addMed:active {
+    box-shadow: 0 0 2px 2px black inset;
+}
+
+#dashboard-container #title {
+    font-size: 2rem;
+}
+
+#dashboard-container a, #dashboard-container button {
+    color: inherit;
+    text-decoration: none;
+}
+
+#dashboard-container button {
+    background: none;
+    border: none;
+}
+#dashboard-container td .function {
+    cursor: pointer;
+}
+#dashboard-container #table-headers th {
+    padding: 10px 20px;
+    background-color: aqua;
+    border: 1px solid black;
+}
+#dashboard-container .table-data td {
+    padding: 5px;
+    border: 1px solid green;
+}
