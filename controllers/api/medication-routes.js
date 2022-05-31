@@ -5,7 +5,24 @@ const router = require('express').Router();
 const withAuth = require('../../utils/auth');
 
 // Importing model Medication
-const { Medication } = require('../../models');
+const { Medication, Addition } = require('../../models');
+
+router.get('/additions', async (req, res) => {
+
+  const userMedsData = await Medication.findAll({
+      where: { 
+        // 1 for testing, change to req.session.user_id
+        user_id: 1,
+      },
+      include: [{
+        model: Addition
+      }],
+      order: [['med_exp_date', 'DESC']],
+  })
+  const userMeds = userMedsData.map((meds) => meds.get({plain: true}))
+
+  res.status(200).json({ userMeds, loggedIn: req.session.loggedIn })
+})
 
 // Creating route to create a new medication
 router.post('/', withAuth, async (req, res) => {
@@ -21,22 +38,33 @@ router.post('/', withAuth, async (req, res) => {
 });
 
 // Creating a route to delete an existing medication
-router.delete('/:id', withAuth, async( req, res ) => {
+router.delete('/:id', withAuth, async ( req, res ) => {
+
   try {
+    
+    const additionsData = await Addition.destroy({
+      where: {
+        medication_id: req.params.id
+      }
+    })
+
     const medicationData = await Medication.destroy({
       where: {
         id: req.params.id, 
         // user_id: req.session.user_id
       }
     });
-
+    
+    if (!additionsData) {
+      res.status(404).json({ message: 'The additions you are tryig to delete could not be found, please try again' });
+    };
     if (!medicationData) {
       res.status(404).json({ message: 'The medication you are tryig to delete could not be found, please try again' });
     };
 
     res.status(200).json(medicationData)
   } catch (err) {
-    res.status(500).json({ message: 'Your request could not be performed, please try again' });
+    res.status(500).json({ message: 'Your request could not be performed, please try again', body: err });
   };
 });
 
