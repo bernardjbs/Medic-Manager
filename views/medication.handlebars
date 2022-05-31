@@ -1,34 +1,34 @@
 <section class="medication-section">
-  <form {{#if id}}class="update-medication">{{else}}class="add-medication"{{/if}}
+  <form {{#if id}}id="update-medication"{{else}}id="add-medication" {{/if}}>
     <div class="form-group">
       <span id=""></span>
       <label for="med_name">Medication Name:</label>
-      <input class="form-input" type="text" data-med-id="{{id}}" id="med_name" value="{{med_name}}" name="med_name" />
+      <input class="form-input" type="text" id="med_name" {{#if id}} data-med-id="{{id}}" value="{{med_name}}" {{/if}} name="med_name" />
     </div>
     <div class="form-group">
       <label for="med_price">Medication Price:</label>
-      <input class="form-input" type="text" id="med_price" value="{{med_price}}" name="med_price" />
+      <input class="form-input" type="text" id="med_price" {{#if id}} value="{{med_price}}" {{/if}}name="med_price" />
     </div>
     <div class="form-group">
       <label for="med_type">Medication Type:</label>
-      <input class="form-input" type="text" id="med_type" value="{{med_type}}" name="med_type" />
+      <input class="form-input" type="text" id="med_type" {{#if id}} value="{{med_type}}" {{/if}} name="med_type" />
     </div>
     <div class="form-group">
       <label for="med_date_acquired">Date Acquired:</label>
-      <input class="form-input" type="text" id="med_date_acquired" value="{{format_time med_date_acquired}}"
+      <input class="form-input" type="text" id="med_date_acquired" {{#if id}} value="{{format_time med_date_acquired}}" {{/if}}
         name="med_date_acquired" />
     </div>
     <div class="form-group">
       <label for="med_script_renewed">Script Renewed:</label>
-      <input class="form-input" type="text" id="med_script_renewed" value="{{format_time med_script_renewed}}"
+      <input class="form-input" type="text" id="med_script_renewed" {{#if id}} value="{{format_time med_script_renewed}}" {{/if}}
         name="med_script_renewed" />
     </div>
     <div class="form-group">
       <label for="med_expiry_date">Expiry Date:</label>
-      <input class="form-input" type="text" id="med_exp_date" value="{{format_time med_exp_date}}"
+      <input class="form-input" type="text" id="med_exp_date" {{#if id}} value="{{format_time med_exp_date}}" {{/if}}
         name="med_expiry_date" />
     </div>
-    <button id="update-medication">Update Medication</button>
+    <button {{#if id}}id="update-medication"{{else}}id="add-medication"{{/if}}>{{#if id}}Update Medication{{else}}Add Medication{{/if}}</button>
   </form>
 
   <form class="update-Addition">

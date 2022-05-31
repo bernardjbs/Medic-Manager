@@ -63,4 +63,7 @@ router.get('/medication/:id', withAuth, async (req, res) => {
     };
   });
 
+  router.get('/medication', (req, res) => {
+    res.render('medication')
+})
 module.exports = router;
