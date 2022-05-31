@@ -49,8 +49,18 @@ router.get('/login', (req, res) => {
       res.redirect('/');
       return;
     }
-
     res.render('login');
 });
+
+router.get('/medication/:id', withAuth, async (req, res) => {
+    try {
+      const medicationData = await Medication.findByPk(req.params.id, { include: { model: Addition } })
+      const medication = medicationData.get({ plain: true });
+      console.log(medication)
+      res.status(200).render('medication', medication);
+    } catch (err) {
+      res.status(500).json(err);
+    };
+  });
 
 module.exports = router;
