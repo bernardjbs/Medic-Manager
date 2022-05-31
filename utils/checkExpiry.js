@@ -1,9 +1,7 @@
 const { Medication, User } = require('../models');
 const sequelize = require('sequelize');
 const { format_time } = require('./helpers')
-
-// todo: HOW TO GET USER ID FROM SESSION? 
-
+const nodemailer = require('./nodemailer');
 
 // Set interval to check everyday
 setInterval(() => {
@@ -12,12 +10,12 @@ setInterval(() => {
 
 const getExpiredMed = async () => {
   const today = new Date()
-  // Check at Midnight
-  if (today.getHours() == '21') {
+  // Check at Midnight - Set hours to '00'
+  if (today.getHours() == '17') {
     const expiredMedsData = await Medication.findAll({
       where: {
         med_exp_date: { [sequelize.Op.lt]: today },
-        // TODO: add condition where user_id: { user id from session }
+        exp_notification_sent: false
       },
       include: [{ model: User }]
     })
@@ -29,21 +27,33 @@ const getExpiredMed = async () => {
         medNamesArr.push(med.med_name)
         const medNames = medNamesArr.join(', ');
         medDetails = {
+          email: med.user.user_email,
           firstName: med.user.user_first_name,
           lastName: med.user.user_last_name,
           medNames: medNames,
-          expDate: format_time(med.med_exp_date) 
+          expDate: format_time(med.med_exp_date)
         }
-
+        const content = `Dear ${medDetails.firstName} ${medDetails.lastName}, Your medication(s) ${medDetails.medNames} has/have expired. Expiry Date: ${medDetails.expDate}. Please discard them`
+        if (med.exp_notification_sent == 0) {
+          nodemailer.sendMail(medDetails.email, content)
+            .then(result => console.log('email is sent', result))
+            .catch((error) => console.log(error.message));
+        }
+        console.log(content);
+        Medication.update(
+          { exp_notification_sent: true },
+          { where: { id: med.id } }
+        );
       });
 
     }
-    console.log(medDetails)
 
 
-    const content = `Dear ${medDetails.firstName} ${medDetails.lastName}, Your medication(s) ${medDetails.medNames} has/have expired. Expiry Date: ${medDetails.expDate}Please discard them`
-    // todo: Send Email Notification - content
-    console.log(content);
+
+
+
+
+
   }
 }
 

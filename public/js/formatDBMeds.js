@@ -18,7 +18,7 @@ const additions = []
 const collectAdditions = async () => {
     const data = await additionsData()
     
-    data.forEach(result => {
+    data.userMeds.forEach(result => {
         const obj = {
             meds_id: `meds${result.id}`,
             number_of_additions: result.additions.length,
@@ -37,53 +37,98 @@ const collectAdditions = async () => {
 }
 
 const createCells = async () => {
-
+    
     await collectAdditions()
 
-    const numberOfAdditions = [];
+    // Collect all additions
+    const allAdditions = [];
+    additions.forEach(addition => addition.additions.forEach(addition => allAdditions.push(addition)))
+    console.log(allAdditions)
 
+    // Collect all unique additions
+    let uniqueAdditions = [];
     additions.forEach(addition => {
-        
-        // Add all additions to headers
-        addition.additions.forEach(addition => {
-            if (!numberOfAdditions.includes(addition.addition_label)) {
-                headers.innerHTML = headers.innerHTML + `<th class="addition">${addition.addition_label}</th>`
-                numberOfAdditions.push(addition.addition_label)
+        addition.additions.forEach(add => {
+            if (!uniqueAdditions.includes(add.addition_label)) {
+                uniqueAdditions.push(add)
             }
         })
+    })
+    console.log(uniqueAdditions)
 
-        const addedTitles = document.querySelectorAll(".addition")
+    // Load each unique addition into a 'th' element onto page
+    uniqueAdditions.forEach(addition => {
+        headers.innerHTML = headers.innerHTML + `<th id="${addition.addition_id}" class="addition-headers" data-medId="${addition.addition_med_id}">${addition.addition_label}</th>`;
+    })
 
-        medications.forEach(medication => {
-            if (addition.meds_id === medication.getAttribute('id')) {
+    // get all addition headers
+    const additionHeadersData = document.querySelectorAll(".addition-headers");
+    const additionHeaders = [];
+    additionHeadersData.forEach(headerNode => additionHeaders.push(headerNode.innerHTML))
+    console.log(additionHeaders)
 
-                const matchArr = []
-                addition.additions.forEach(addition => {
-                    addedTitles.forEach(header => {
-                        if (addition.addition_label === header.innerHTML) {
-                            matchArr.push({
-                                meds_id: `meds${addition.addition_med_id}`,
-                                value: addition.addition_value,
-                                header: header.innerHTML
-                            })
-                        } 
-                    })
-                })
-        
-                matchArr.forEach(match => {
-                    addedTitles.forEach(title => {
-                        console.log(match.header)
-                        console.log(title.innerHTML)
-                        if (match.header === title.innerHTML) {
-                            medication.innerHTML = medication.innerHTML + `<td data-addition="${match.header}">${match.value}</td>`
-                        } 
-                        
-                    })
-                    
+    // cycle through each med and match up the row with the addition headers
+    medications.forEach(medication => {
+        const medId = medication.getAttribute('id').slice(4)
+        additionHeaders.forEach(header => {
+            medication.innerHTML = medication.innerHTML + `<td data-med="${medId}" data-addition="${header}"></td>`
+        })
+    })
+
+    // Set each addition into its respective row
+    medications.forEach(medication => {
+        console.log(medication)
+        const medId = medication.getAttribute('id').slice(4)
+
+        allAdditions.forEach(addition => {
+            if (addition.addition_med_id == medId) {
+                const children = Array.from(medication.children)
+                children.forEach(child => {
+                    if (child.getAttribute('data-addition') === addition.addition_label) {
+                        console.log(addition)
+                        child.innerHTML = addition.addition_value
+                    }
                 })
             }
         })
     })
+
+    // Add delete & update buttons
+    headers.innerHTML = headers.innerHTML + `<th>Remove</th><th>Update</th>`
+
+    medications.forEach(med => {
+        const medId = med.getAttribute('id').slice(4)
+
+        med.innerHTML = med.innerHTML + `<td><button id="${medId}" class="function">Delete Row</button></td>`;
+        med.innerHTML = med.innerHTML + `<td><a href="/dashboard/${medId}" class="function">Update Row</a></td>`;
+    })
+
+    const deleteButtons = document.querySelectorAll(".delete")
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            deleteMedication(button.getAttribute('id'))
+        })
+    })
 }
 
+const deleteMedication = async (id) => {
+
+    const response = await fetch(`/api/medications/${id}`, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+    })
+
+    if (response.ok) {
+        window.location.replace('/dashboard')
+    } else {
+        alert('Failed to delete data');
+    }
+
+}
 createCells()
+
+
+
+
+/* <td id="delete{{id}}">Delete Row</td>
+<td><a href="/dashboard/{{id}}">Update Row</a></td> */
