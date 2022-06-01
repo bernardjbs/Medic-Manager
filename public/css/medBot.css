@@ -108,6 +108,7 @@
     height: 300px;
     border: 5px groove black;
     border-bottom: 1px solid black;
+    background-color: white;
 }
 
 /* Chat */

@@ -2,23 +2,25 @@
 /* Main container */
 .login-main-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     justify-content: center;
     align-items: center;
-    height: 80vh;
+    height: 83vh;
 }
 
 /* Cards */
 
 .login-main-container .page-title {
     text-align: center;
-    font-size: 1.7rem;
-    margin-bottom: 5px;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-weight: bold;
 }
 
 .login-main-container .form {
     border: 1px solid black;
-    padding: 1rem;
+    padding: 50px 2rem;
+    box-shadow: 1px 2px 5px 3px black;
 }
 
 .login-main-container .form-group {
@@ -32,16 +34,27 @@
 
 .login-main-container .label {
     margin-right: 5px;
+    width: 100px;
+    font-weight: bold;
+    font-size: 1.7rem;
+}
+.login-main-container input {
+    box-shadow: 1px 1px 2px 2px black;
+}
+
+.login-main-container .signup-card.card {
+    padding: 400px inherit;
 }
 
 /* Button */
 .login-main-container button {
     background: none;
     border: 1px solid black;
-    padding: .1rem .5rem;
+    padding: .5rem 1rem;
     box-shadow: 0 0 1px 1px black;
-    font-size: 1.3rem;
+    font-size: 1.6rem;
     cursor: pointer;
+    font-weight: bold;
 }.login-main-container button:hover {
     box-shadow: none;
 }.login-main-container button:active {

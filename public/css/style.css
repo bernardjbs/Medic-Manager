@@ -13,3 +13,10 @@
   --border-radius: 0.3rem;
 }
 
+body {
+  /* Created with https://www.css-gradient.com */
+background: #FFFFFF;
+background: -webkit-linear-gradient(top left, #FFFFFF, #D8D8D8);
+background: -moz-linear-gradient(top left, #FFFFFF, #D8D8D8);
+background: linear-gradient(to bottom right, #FFFFFF, #D8D8D8);
+}
