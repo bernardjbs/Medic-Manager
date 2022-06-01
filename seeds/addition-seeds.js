@@ -32,21 +32,6 @@ const AdditionData = [
     value: 'medic@pharm.com',
   },
   {
-    medication_id: 3,
-    label: 'Doctor',
-    value: 'Wu',
-  },
-  {
-    medication_id: 3,
-    label: 'Purpose',
-    value: 'Migraine',
-  },
-  {
-    medication_id: 4,
-    label: 'Food to Avoid',
-    value: 'Banana',
-  },
-  {
     medication_id: 4,
     label: 'Generic Brand',
     value: 'Yes',
