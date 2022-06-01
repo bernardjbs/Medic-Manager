@@ -129,10 +129,10 @@ Handlebars templating folder
 ![alt text](https://github.com/?raw=true)
 
 ## Contributors
-Dave Plummer
-Bernard Sin Fat
-Mon Levy
-Chi Doan
+- Dave Plummer (https://github.com/origin-42)
+- Bernard Sin Fat (https://github.com/bernardjbs)
+- Mon Levy (https://github.com/monlevey)
+- Chi Doan (https://github.com/hergemony)
 
 ## Questions
 Any questions please email info@medicmanager.com 
