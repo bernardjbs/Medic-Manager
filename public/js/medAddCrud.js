@@ -72,26 +72,23 @@ const addMedFormHandler = async (event) => {
   }
 }
 
+const updateBtn = document.querySelectorAll('.update-addition-button');
+const labelValues = document.querySelectorAll(".update-addition-value");
 
+// if length > 5, hide add addition section
+alert("btn length: " + updateBtn.length)
+updateBtn.forEach(function(button) {
+  button.addEventListener('click', (e) => {
+    e.preventDefault()
 
-
-  const updateBtn = document.querySelectorAll('.update-addition-button');
-  const labelValues = document.querySelectorAll(".update-addition-value") 
-
-  // if length > 5, hide add addition section
-  alert("btn length: " + updateBtn.length)
-  updateBtn.forEach(function(button) {
-    button.addEventListener('click', (e) => {
-      e.preventDefault()
-
-      let getValue
-      Array.prototype.slice.call(labelValues).forEach(value => {
-        if (value.value) {
-          getValue = value.value
-        }
-      })
+    let getValue
+    Array.prototype.slice.call(labelValues).forEach(value => {
+      if (value.value) {
+        getValue = value.value
+      }
     })
   })
+})
 
 document
 .querySelector('#update-medication')
