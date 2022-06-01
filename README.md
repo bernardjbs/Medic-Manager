@@ -124,20 +124,19 @@ Handlebars templating folder
 
 ## Screenshot
 
-![alt text](https://github.com/)
+![alt text](https://github.com/bernardjbs/Medic-Manager/blob/main/public/assets/images/Screenshot%202022-06-01%20210620.jpg?raw=true)
 
-![alt text](https://github.com/?raw=true)
 
 ## Contributors
-Dave Plummer
-Bernard Sin Fat
-Mon Levy
-Chi Doan
+- Dave Plummer (https://github.com/origin-42)
+- Bernard Sin Fat (https://github.com/bernardjbs)
+- Mon Levey (https://github.com/monlevey)
+- Chi Doan (https://github.com/hergemony)
 
 ## Questions
 Any questions please email info@medicmanager.com 
 (N.B this is a fictional email until official email is created)
 
 ## Copyright
-2022 MEDIC MANAGER®️
+©️2022 MEDIC MANAGER®️
 

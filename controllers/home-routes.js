@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 // Import models (tables) to extract info from and import info to
-const { Addition, Medication, User } = require('../models');
+const { Addition, Medication } = require('../models');
 
 // Authenticate that user is logged in before allowing access to certain parts of webpage with this middleware
 const withAuth = require('../utils/auth')
@@ -30,8 +30,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
 
     const userMedsData = await Medication.findAll({
         where: {
-            // 1 for testing, change to req.session.user_id
-            user_id: 1,
+            user_id: req.session.user_id,
         },
         order: [['med_exp_date', 'DESC']],
     })

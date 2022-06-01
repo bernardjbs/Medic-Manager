@@ -2,7 +2,6 @@
 const { Model, DataTypes } = require('sequelize');
 // import our database connection from config.js
 const sequelize = require('../config/connection');
-const EmailMessage = require('./EmailMessage');
 const User = require('./User');
 
 // Initialize Medication model (table) by extending off Sequelize's Model class
