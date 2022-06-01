@@ -1,5 +1,5 @@
 const router = require('express').Router();
-
+const nodemailer = require('../../utils/nodemailer');
 // Import any Models that are intended to be used on this page
 const { User } = require('../../models');
 
@@ -23,11 +23,24 @@ router.post('/', async (req, res) => {
     req.session.save(() => {
       req.session.loggedIn = true;
       req.session.username = dbUserData.user_first_name;
-      req.session.id = dbUserData.id
-
+      req.session.user_id = dbUserData.id
       res.status(200).json(dbUsersData);
-      
     });
+
+    console.log('SEND WELCOME MAIL HERE') 
+    const subject = 'Welcome to Medic Manager'
+    const content = `
+          <h1>Welcome to Medic Manager</h1>
+    
+          <p>Dear ${req.body.firstName} ${req.body.lastName}, </P>
+          <p>thank you for signing up with Medic Manager. With us, you will be able to manage your medications with no hassle.</p>
+          <p>Please do not hesitate to contact our support team, should there be any inqiry: </p>
+          <p>Tel: (08)5555-8989 - email: <a href="mailto:node.medic.manager@gmail.com">node.medic.manager@gmail.com</a></p>
+          <p>Kind Ragards, </p>
+          <p>Medic Manager Team </p>
+          `
+    nodemailer.sendMail(req.body.email, subject, content)
+    
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -42,7 +55,6 @@ router.post('/login', async (req, res) => {
         user_email: req.body.email,
       },
     });
-
     if (!dbUserData) {
       res
         .status(400)
@@ -57,18 +69,16 @@ router.post('/login', async (req, res) => {
         .json({ message: 'Incorrect username or password. Please try again!' });
       return;
     }
-  
     req.session.save(() => {
       req.session.loggedIn = true;
       req.session.username = dbUserData.user_first_name;
       req.session.user_id = dbUserData.id
-
       res
         .status(200)
         .json({ user: dbUserData, message: 'You are now logged in!' });
     });
   } catch (err) {
-    console.log(err);
+    console.log(err); 
     res.status(500).json(err);
   }
 });

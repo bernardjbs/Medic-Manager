@@ -11,8 +11,7 @@ router.get('/additions', async (req, res) => {
 
   const userMedsData = await Medication.findAll({
       where: { 
-        // 1 for testing, change to req.session.user_id
-        user_id: 1,
+        user_id: req.session.user_id,
       },
       include: [{
         model: Addition
@@ -27,13 +26,15 @@ router.get('/additions', async (req, res) => {
 // Creating route to create a new medication
 router.post('/', withAuth, async (req, res) => {
   try {
+    console.log(req.body);
+    console.log(req.session.user_id)
     const newMedication = await Medication.create({
       ...req.body,
       user_id: req.session.user_id
     });
     res.status(200).json(newMedication);
   } catch (err) {
-    res.status(400).json({ message: 'Your request could not be performed, please try again' })
+    res.status(400).json({ message: 'Your request could not be performed, please try again', body: err })
   };
 });
 
@@ -74,7 +75,7 @@ router.put('/:id', withAuth, async ( req, res ) => {
     await Medication.update(req.body, { where: { id: req.params.id } });
     res.status(200).json({ message: 'Your medication details have successfully been updated' });
   } catch (err) {
-    res.status(400).json( { message: 'Your request could not be performed, please try again' });
+    res.status(400).json( { message: 'Your request could not be performed, please try again', body: err });
   };
 });
 
