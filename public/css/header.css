@@ -29,15 +29,30 @@ h1   { font-size: 2.4rem; } /* =24px */
       --grey: #5e877f;
 } 
 
+
+
 .index-nav {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
-    background-color: var(--tertiary);
     font-family: 'Bebas Neue', Arial, Helvetica, sans-serif;
     font-style: var(--white);
     font-size: 1.4rem;
+    background-color: white;
+    z-index: 1;
+}
+
+.index-nav #logout {
+    color: inherit;
+    text-decoration: inherit;
+    cursor: inherit;
+    font-weight: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    padding: inherit;
+    margin: inherit;
+    border: inherit;
 }
 
 .index-nav .nav-item, .index-nav .nav-link {
@@ -59,7 +74,6 @@ h1   { font-size: 2.4rem; } /* =24px */
 }
 
 .index-nav {
-    background-color: var(--tertiary);
     font-family: 'Bebas Neue', Arial, Helvetica, sans-serif;
     font-style: var(--white);
     font-size: 2rem;

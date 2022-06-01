@@ -11,7 +11,7 @@ const email = process.env.NODEMAIL_EMAIL
 const Oauth2_client = new OAuth2(clientId, clientSecret);
 Oauth2_client.setCredentials({ refresh_token: refreshToken });
 
-const sendMail = async (emailTo, content) => {
+const sendMail = async (emailTo, subject, content) => {
   try {
     const accessToken = await Oauth2_client.getAccessToken();
     const transport = nodemailer.createTransport({
@@ -29,7 +29,7 @@ const sendMail = async (emailTo, content) => {
     const mailOptions = {
       from: `MEDIC MANAGER <${email}>`,
       to: `${emailTo}`,
-      subject: 'Hello from MEDIC MANAGER',
+      subject: `${subject}`,
       text: 'YOUR MEDICATION - PANADOL - IS EXPIRING IN 3 DAYS',
       html: `<h1>${content}</h1>`
     }

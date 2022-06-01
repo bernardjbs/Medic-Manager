@@ -34,8 +34,9 @@ const getExpiredMed = async () => {
           expDate: format_time(med.med_exp_date)
         }
         const content = `Dear ${medDetails.firstName} ${medDetails.lastName}, Your medication(s) ${medDetails.medNames} has/have expired. Expiry Date: ${medDetails.expDate}. Please discard them`
+        const subject = `Notification from Medic Manager - Medication expiry`
         if (med.exp_notification_sent == 0) {
-          nodemailer.sendMail(medDetails.email, content)
+          nodemailer.sendMail(medDetails.email, subject, content)
             .then(result => console.log('email is sent', result))
             .catch((error) => console.log(error.message));
         }
