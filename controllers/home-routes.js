@@ -8,7 +8,7 @@ const withAuth = require('../utils/auth')
 
 // CRUD operations
 router.get('/', (req, res) => {
-    res.render('homepage')
+    res.render('homepage',{ loggedIn: req.session.loggedIn })
 })
 
 router.post('/', async (req, res) => {
@@ -52,7 +52,6 @@ router.get('/medication/:id', withAuth, async (req, res) => {
     try {
         const medicationData = await Medication.findByPk(req.params.id, { include: { model: Addition } })
         const medication = medicationData.get({ plain: true });
-        console.log(medication);
         res.status(200).render('medication', { 
             ...medication,
             loggedIn: req.session.loggedIn

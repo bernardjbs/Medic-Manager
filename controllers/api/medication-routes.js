@@ -11,7 +11,7 @@ router.get('/additions', async (req, res) => {
 
   const userMedsData = await Medication.findAll({
       where: { 
-        user_id: 1,
+        user_id: req.session.user_id,
       },
       include: [{
         model: Addition
@@ -25,6 +25,7 @@ router.get('/additions', async (req, res) => {
 
 // Creating route to create a new medication
 router.post('/', withAuth, async (req, res) => {
+  
   try {
     const newMedication = await Medication.create({
       ...req.body,
@@ -41,21 +42,18 @@ router.delete('/:id', withAuth, async ( req, res ) => {
 
   try {
     
-    const additionsData = await Addition.destroy({
-      where: {
-        medication_id: req.params.id
-      }
-    })
-
     const medicationData = await Medication.destroy({
       where: {
-        id: req.params.id, 
-      }
+        id: req.params.id,
+      },
+      include: {
+        model: Addition,
+        where: {
+          medication_id: req.params.id
+        }
+      },
     });
-    
-    if (!additionsData) {
-      res.status(404).json({ message: 'The additions you are tryig to delete could not be found, please try again' });
-    };
+
     if (!medicationData) {
       res.status(404).json({ message: 'The medication you are tryig to delete could not be found, please try again' });
     };
@@ -68,7 +66,7 @@ router.delete('/:id', withAuth, async ( req, res ) => {
 
 // Creating a route to update an existing medication 
 router.put('/:id', withAuth, async ( req, res ) => {
-  console.log(req)
+
   try {
     await Medication.update(req.body, { where: { id: req.params.id } });
     res.status(200).json({ message: 'Your medication details have successfully been updated' });

@@ -7,7 +7,7 @@ const bodyText = document.querySelector("#botBody")
 
 // Bot responses 
 const botResponses = ["Why are you asking me this?", "Ok but did you know sunshine is bright?.. huh?", "I'm but a humble service bot. I know not.", "Beep boop", "Ok but what if we didn't do that?", "I can press buttons too!", "Stop that", "Weeeeeeeee"];
-const redirectResponses = ["Dashboard... dashboard? DASHBOARD!!", "Let's go home..", "Time for an update? Let's go!", "Taking you to edit your medications.", "Let's add something new.", "Going to login. Beep."];
+const redirectResponses = ["Dashboard... dashboard? DASHBOARD!!", "Let's go home..", "Time for an update? Let's go!", "Taking you to edit your medications.", "Let's add something new.", "Going to login. Beep.", "Time to destroy!!!... the session.. performing logout."];
 
 // Check query and response accordingly
 const botResponse = (query) => {
@@ -30,9 +30,9 @@ const botResponse = (query) => {
         redirectResponses.forEach(botsentence => {
             let splitWords = botsentence.split(" ");
             splitWords.forEach(botWord => {
+                
                 let formatbotWord = botWord.replace(/[^a-z]/gi, '').toLowerCase()
                 if (formatbotWord === word) {
-                    
                     customBotResponse = botsentence;
                 }
             })
@@ -55,6 +55,8 @@ const botResponse = (query) => {
                 findMatch("add");
             } else if (formatWord === "home") {
                 findMatch("home");
+            } else if (formatWord === "logout") {
+                findMatch("logout");
             }
         }
     })
@@ -64,7 +66,7 @@ const botResponse = (query) => {
             bodyText.innerHTML = bodyText.innerHTML + `<p class="botResponse"><strong>MedBot: </strong>${botResponses[randomize]} </p>`
         } else {
             bodyText.innerHTML = bodyText.innerHTML + `<p class="botResponse"><strong>MedBot: </strong>${customBotResponse} </p>`
-            setTimeout(() => {
+            setTimeout( async () => {
                 // For each option on the menu, add the following relative replace
                 if (customBotResponse === "Taking you to edit your medications." || customBotResponse === "Dashboard... dashboard? DASHBOARD!!" || customBotResponse === "Time for updates? Let's go!") {
                     window.location.replace('/dashboard')
@@ -74,6 +76,17 @@ const botResponse = (query) => {
                     window.location.replace('/medication')
                 } else if (customBotResponse === "Going to login. Beep.") {
                     window.location.replace('/login')
+                } else if (customBotResponse === "Time to destroy!!!... the session.. performing logout.") {
+                    const response = await fetch('/api/users/logout', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                    });
+                    
+                    if (response.ok) {
+                        document.location.replace('/');
+                    } else {
+                        bodyText.innerHTML = bodyText.innerHTML + `<p class="botResponse"><strong>MedBot: </strong>Sorry, you did something wrong. </p>`
+                    }
                 }
             }, 1500)
         }
