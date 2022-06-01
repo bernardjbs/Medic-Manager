@@ -2,6 +2,29 @@
   <div class="form-spacer">
     <h1>Additional Information</h1>
 
+
+  {{#each additions}}
+  <form class="update-addition">
+  <label for="update-addition-label">{{label}}:</label>
+  <input class="form-input" type="text" id="update-addition-value" value="{{value}}"
+    name="update-addition-value" />
+  <button class="update-addition-button">Update</button>
+  <button class="delete-addition-button" data-addition-id="{{this.id}}">Delete</button>
+  </form>
+  {{/each}}
+
+</section>
+
+<section id="add-addition-section">
+  <form class="add-addition" data-medication-id="{{additions.0.medication_id}}">
+    <label for="add-addition-label-lbl">Label:</label>
+    <input class="form-input" type="text" id="add-addition-label" name="add-addition-label" />
+    <label for="add-addition-value-lbl">Value:</label>
+    <input class="form-input" type="text" id="add-addition-value" name="add-addition-value" />
+    <button id="add-addition-button">Add New</button>
+  </form>
+</section>
+
       <section id="update-addition-section">
         {{#each additions}}
         <form class="update-addition">
@@ -27,3 +50,4 @@
   
 </div>
   
+
