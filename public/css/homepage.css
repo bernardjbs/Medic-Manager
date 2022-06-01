@@ -82,7 +82,7 @@ h1   { font-size: 2.4rem; } /* =24px */
     background-color: var(--paleblue);
 }
 
-.homepage-link-to-login {
+.homepage-link-to-dashboard {
     justify-content: center;
     align-items: center;
     font-family: 'Bebas Neue', Arial, Helvetica, sans-serif;
@@ -92,10 +92,14 @@ h1   { font-size: 2.4rem; } /* =24px */
     
 }
 
-
-
 .homepage-hero-image-right {
     flex:3
+}
+
+.homepage-side-img {
+    width: 100%;
+    margin-left: 2rem;
+    padding-bottom: 5rem;
 }
 
 .homepage-hero-image-visible-mobile {
@@ -125,6 +129,13 @@ h1   { font-size: 2.4rem; } /* =24px */
     .homepage-hero-image-visible-mobile {
         display:block;
     }
+
+    .homepage-mobile-img {
+        width: 100%;
+        margin-top: 2rem;
+        padding-bottom: 5rem;
+    }
+
 }
 
 
