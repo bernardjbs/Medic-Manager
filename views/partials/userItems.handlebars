@@ -1,8 +1,8 @@
-<tr id="meds{{id}}" class="medication">
+<tr id="meds{{id}}" class="medication table-row table-data">
     <td>{{med_name}}</td>
     <td>{{med_price}}</td>
     <td>{{med_type}}</td>
-    <td>{{med_date_acquired}}</td>
-    <td>{{med_script_renewed}}</td>
-    <td>{{med_exp_date}}</td>
+    <td>{{format_time med_date_acquired}}</td>
+    <td>{{format_time med_script_renewed}}</td>
+    <td>{{format_time med_exp_date}}</td>
 </tr>
