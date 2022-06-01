@@ -95,7 +95,7 @@ const createCells = async () => {
         const medId = med.getAttribute('id').slice(4)
 
         med.innerHTML = med.innerHTML + `<td style="background-color: #eaeaea; background: #eaeaea; border: none;"><button id="${medId}" class="function remove">Delete Row</button></td>`;
-        med.innerHTML = med.innerHTML + `<td style="background-color: #eaeaea; background: #eaeaea; border: none;"><a href="/dashboard/${medId}" class="function update">Update Row</a></td>`;
+        med.innerHTML = med.innerHTML + `<td style="background-color: #eaeaea; background: #eaeaea; border: none;"><a href="/medication/${medId}" class="function update">Update Row</a></td>`;
     })
 
     const deleteButtons = document.querySelectorAll(".remove")

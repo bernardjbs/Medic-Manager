@@ -1,37 +1,40 @@
+
+{{!-- Medications section to add medications and also update depending on values assigned. --}}
 <section class="medication-section">
   <form {{#if id}}id="update-medication" {{else}}id="add-medication" {{/if}}>
-    <div class="form-group">
-      <span id=""></span>
-      <label for="med_name">Medication Name:</label>
-      <input class="form-input" type="text" id="med_name" {{#if id}} data-med-id="{{id}}" data-user-id="{{user_id}}"
-        value="{{med_name}}" {{/if}} name="med_name" />
+    <h1>Medication Information</h1>
+    <div class="form-spacer">
+      <div class="form-group">
+        <label for="med_name">Name:</label>
+        <input class="form-input" type="text" id="med_name" {{#if id}} data-med-id="{{id}}" data-user-id="{{user_id}}" value="{{med_name}}" {{/if}} name="med_name" />
+      </div>
+      <div class="form-group">
+        <label for="med_price">Price:</label>
+        <input class="form-input" type="text" id="med_price" {{#if id}} value="{{med_price}}" {{/if}}name="med_price" />
+      </div>
+      <div class="form-group">
+        <label for="med_type">Type:</label>
+        <input class="form-input" type="text" id="med_type" {{#if id}} value="{{med_type}}" {{/if}} name="med_type" />
+      </div>
+      <div class="form-group">
+        <label for="med_date_acquired">Date Acquired:</label>
+        <input class="form-input" type="date" id="med_date_acquired" {{#if id}} value="{{format_time med_date_acquired}}"{{/if}} name="med_date_acquired" />
+      </div>
+      <div class="form-group">
+        <label for="med_script_renewed">Script Renewed:</label>
+        <input class="form-input" type="text" id="med_script_renewed" {{#if id}} value="{{format_time med_script_renewed}}" {{/if}} name="med_script_renewed" />
+      </div>
+      <div class="form-group">
+        <label for="med_expiry_date">Expiry Date:</label>
+        <input class="form-input" type="text" id="med_exp_date" {{#if id}} value="{{format_time med_exp_date}}" {{/if}} name="med_expiry_date" />
+      </div>
+
+    <button {{#if id}}id="update-medication" {{else}}id="add-medication" {{/if}}>{{#if id}}Update Medication{{else}}Add Medication{{/if}}</button>
     </div>
-    <div class="form-group">
-      <label for="med_price">Medication Price:</label>
-      <input class="form-input" type="text" id="med_price" {{#if id}} value="{{med_price}}" {{/if}}name="med_price" />
-    </div>
-    <div class="form-group">
-      <label for="med_type">Medication Type:</label>
-      <input class="form-input" type="text" id="med_type" {{#if id}} value="{{med_type}}" {{/if}} name="med_type" />
-    </div>
-    <div class="form-group">
-      <label for="med_date_acquired">Date Acquired:</label>
-      <input class="form-input" type="text" id="med_date_acquired" {{#if id}} value="{{format_time med_date_acquired}}"
-        {{/if}} name="med_date_acquired" />
-    </div>
-    <div class="form-group">
-      <label for="med_script_renewed">Script Renewed:</label>
-      <input class="form-input" type="text" id="med_script_renewed" {{#if id}}
-        value="{{format_time med_script_renewed}}" {{/if}} name="med_script_renewed" />
-    </div>
-    <div class="form-group">
-      <label for="med_expiry_date">Expiry Date:</label>
-      <input class="form-input" type="text" id="med_exp_date" {{#if id}} value="{{format_time med_exp_date}}" {{/if}}
-        name="med_expiry_date" />
-    </div>
-    <button {{#if id}}id="update-medication" {{else}}id="add-medication" {{/if}}>{{#if id}}Update Medication{{else}}Add
-      Medication{{/if}}</button>
+    
   </form>
+
+  {{!-- Add additions information from handlebars --}}
   {{> additions}}
 </section>
 
