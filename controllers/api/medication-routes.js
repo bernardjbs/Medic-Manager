@@ -11,7 +11,7 @@ router.get('/additions', async (req, res) => {
 
   const userMedsData = await Medication.findAll({
       where: { 
-        user_id: req.session.user_id,
+        user_id: 1,
       },
       include: [{
         model: Addition

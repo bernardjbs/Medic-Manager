@@ -1,5 +1,7 @@
-<h1>My Custom Medicine Information</h1>
-<section id="update-addition-section">
+<div id="additions-wrapper">
+  <div class="form-spacer">
+    <h1>Additional Information</h1>
+
 
   {{#each additions}}
   <form class="update-addition">
@@ -22,3 +24,30 @@
     <button id="add-addition-button">Add New</button>
   </form>
 </section>
+
+      <section id="update-addition-section">
+        {{#each additions}}
+        <form class="update-addition">
+          <label for="update-addition-label">{{label}}:</label>
+          <input class="form-input update-addition-value" type="text" placeholder="{{value}}"
+            name="update-addition-value" />
+          <button class="update-addition-button" data-addition-id="{{id}}" data-label="{{label}}" data-value="{{value}}">Update</button>
+          <button id="delete-addition-button">Delete</button>
+        </form>
+        {{/each}}
+      </section>
+    
+      <section id="add-addition-section">
+        <form class="add-addition">
+          <label for="add-addition-label-lbl">Label:</label>
+          <input class="form-input" type="text" id="add-addition-label" name="add-addition-label" />
+          <label for="add-addition-value-lbl">Value:</label>
+          <input class="form-input" type="text" id="add-addition-value" name="add-addition-value" />
+          <button id="update-addition-button">Add New</button>
+      </form>
+    </section>
+  </div>
+  
+</div>
+  
+

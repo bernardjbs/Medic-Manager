@@ -1,0 +1,50 @@
+/* .medication-section  */
+
+.medication-section {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 auto;
+    margin-top: 70px;
+    max-width: 70%;
+    height: 82vh;
+    padding: 5rem;
+}
+.medication-section * {
+    width: 350px;
+}
+
+.medication-section .add-addition {
+    display: flex;
+    flex-direction: column;
+}
+
+.medication-section h1 {
+    font-weight: bold;
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    text-decoration: underline;
+}
+
+.medication-section .form-group {
+    width: 150px;
+    margin: 5px 0;
+}
+.medication-section .form-group *, .medication-section * {
+    font-weight: bold;
+}
+.medication-section .form-group label {
+    margin-bottom: 15px;
+}
+
+.medication-section #additions-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.medication-section #form-spacer {
+    padding: 5px;
+}
+.medication-section #form-spacer * {
+    margin: 10px 0;
+}

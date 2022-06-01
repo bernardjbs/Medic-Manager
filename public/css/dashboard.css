@@ -4,6 +4,9 @@
     justify-content: center;
     margin: 20px 0;
 }
+#dashboard-container table {
+    box-shadow: 0 1px 2px 2px black
+}
 
 #dashboard-container tbody {
     background-image: url('/assets/images/medical.jpg');
@@ -106,10 +109,6 @@
 
 #dashboard-container button:active, #dashboard-container a:active {
   transform: scale(1.025);
-}
-
-#dashboard-container td .function {
-    cursor: pointer;
 }
 #dashboard-container #table-headers th {
     padding: 20px 10px;

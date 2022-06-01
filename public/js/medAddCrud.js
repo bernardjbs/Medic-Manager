@@ -82,6 +82,29 @@ deleteBtn.forEach(function (button) {
       method: 'DELETE',
     });
 
+  const updateBtn = document.querySelectorAll('.update-addition-button');
+  const labelValues = document.querySelectorAll(".update-addition-value") 
+
+  // if length > 5, hide add addition section
+  alert("btn length: " + updateBtn.length)
+  updateBtn.forEach(function(button) {
+    button.addEventListener('click', (e) => {
+      e.preventDefault()
+
+      let getValue
+      Array.prototype.slice.call(labelValues).forEach(value => {
+        if (value.value) {
+          getValue = value.value
+        }
+      })
+    })
+  })
+
+document
+.querySelector('#update-medication')
+?.addEventListener('click', updateMedFormHandler);  
+
+
     if (response.ok) {
       alert('Your Additional info for medication has successfully been deleted');
     } else {
