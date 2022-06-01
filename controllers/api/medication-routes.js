@@ -41,7 +41,7 @@ router.post('/', withAuth, async (req, res) => {
 router.delete('/:id', withAuth, async ( req, res ) => {
 
   try {
-    
+    console.log(req.params)
     const medicationData = await Medication.destroy({
       where: {
         id: req.params.id,
