@@ -1,0 +1,94 @@
+/*  font-family: 'Bebas Neue', cursive;
+font-family: 'Dosis', sans-serif;
+font-family: 'Roboto', sans-serif; */
+
+html { font-size: 62.5%; } 
+body { font-size: 1.4rem; } /* =14px */
+h1   { font-size: 2.4rem; } /* =24px */
+
+:root {
+    --primary: #3d5852;
+    --secondary: #86938f;
+    --tertiary: #ffffff;
+    --quatrinary: #6c6b67;
+    --light: #e3e4e3;
+    --dark: #182c23;
+    --error: rgb(228, 46, 1);
+    /* alternative colours */
+      --purple: #79025B;
+      --pink: #D67AB1;
+      --pastelpink: #E7B1D0;
+      --white: #FFFFFF;
+      --paleblue: #A8DCD9;
+      --yellow: #FFBA08;
+      --blue: #3F88C5;
+      --brightpink: #E43F6F;
+      --midpurple: #BE3E82;
+      --midpink: #F56476;
+      --green: #197278;
+      --grey: #5e877f;
+} 
+
+
+
+.index-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    font-family: 'Bebas Neue', Arial, Helvetica, sans-serif;
+    font-style: var(--white);
+    font-size: 1.4rem;
+    background-color: white;
+    z-index: 1;
+}
+
+.index-nav #logout {
+    color: inherit;
+    text-decoration: inherit;
+    cursor: inherit;
+    font-weight: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    padding: inherit;
+    margin: inherit;
+    border: inherit;
+}
+
+.index-nav .nav-item, .index-nav .nav-link {
+    color: black;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.index-nav ul {
+    list-style-type: none;
+    margin-left: 1rem;
+    padding:1.5rem;
+    display: flex;
+}
+/* gap between choice buttons */
+.index-nav li {
+    margin-top: 0.2rem;
+    padding-left: 1.6rem;
+}
+
+.index-nav {
+    font-family: 'Bebas Neue', Arial, Helvetica, sans-serif;
+    font-style: var(--white);
+    font-size: 2rem;
+}
+
+.index-nav #logo {
+    justify-content: center;
+}
+
+.index-nav .medicmanagerlogo {
+    align-items: left;
+    justify-content: left;
+    height: 150px;
+    width: 150px;
+}
+
+
+ 

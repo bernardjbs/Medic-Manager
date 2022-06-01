@@ -41,3 +41,8 @@ q:before,q:after {
 }
 abbr,acronym { border:0;
 }
+
+button {
+    background: inherit;
+    border: inherit;
+}

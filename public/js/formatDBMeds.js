@@ -43,7 +43,6 @@ const createCells = async () => {
     // Collect all additions
     const allAdditions = [];
     additions.forEach(addition => addition.additions.forEach(addition => allAdditions.push(addition)))
-    console.log(allAdditions)
 
     // Collect all unique additions
     let uniqueAdditions = [];
@@ -54,7 +53,6 @@ const createCells = async () => {
             }
         })
     })
-    console.log(uniqueAdditions)
 
     // Load each unique addition into a 'th' element onto page
     uniqueAdditions.forEach(addition => {
@@ -65,7 +63,6 @@ const createCells = async () => {
     const additionHeadersData = document.querySelectorAll(".addition-headers");
     const additionHeaders = [];
     additionHeadersData.forEach(headerNode => additionHeaders.push(headerNode.innerHTML))
-    console.log(additionHeaders)
 
     // cycle through each med and match up the row with the addition headers
     medications.forEach(medication => {
@@ -77,7 +74,6 @@ const createCells = async () => {
 
     // Set each addition into its respective row
     medications.forEach(medication => {
-        console.log(medication)
         const medId = medication.getAttribute('id').slice(4)
 
         allAdditions.forEach(addition => {
@@ -85,7 +81,6 @@ const createCells = async () => {
                 const children = Array.from(medication.children)
                 children.forEach(child => {
                     if (child.getAttribute('data-addition') === addition.addition_label) {
-                        console.log(addition)
                         child.innerHTML = addition.addition_value
                     }
                 })
@@ -94,16 +89,16 @@ const createCells = async () => {
     })
 
     // Add delete & update buttons
-    headers.innerHTML = headers.innerHTML + `<th>Remove</th><th>Update</th>`
+    headers.innerHTML = headers.innerHTML + `<th class="edits" style="background-color: #eaeaea; border: none;"></th><th class="edits" style="background-color: #eaeaea; border: none;"></th>`
 
     medications.forEach(med => {
         const medId = med.getAttribute('id').slice(4)
 
-        med.innerHTML = med.innerHTML + `<td><button id="${medId}" class="function">Delete Row</button></td>`;
-        med.innerHTML = med.innerHTML + `<td><a href="/dashboard/${medId}" class="function">Update Row</a></td>`;
+        med.innerHTML = med.innerHTML + `<td style="background-color: #eaeaea; background: #eaeaea; border: none;"><button id="${medId}" class="function remove">Delete Row</button></td>`;
+        med.innerHTML = med.innerHTML + `<td style="background-color: #eaeaea; background: #eaeaea; border: none;"><a href="/dashboard/${medId}" class="function update">Update Row</a></td>`;
     })
 
-    const deleteButtons = document.querySelectorAll(".delete")
+    const deleteButtons = document.querySelectorAll(".remove")
     deleteButtons.forEach(button => {
         button.addEventListener('click', function () {
             deleteMedication(button.getAttribute('id'))

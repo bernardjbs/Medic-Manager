@@ -74,6 +74,7 @@ const addMedFormHandler = async (event) => {
 
 
 
+
   const updateBtn = document.querySelectorAll('.update-addition-button');
 
   // if length > 5, hide add addition section
@@ -90,6 +91,14 @@ const addMedFormHandler = async (event) => {
       
     })
   })
+
+document
+.querySelector('#update-medication')
+?.addEventListener('click', updateMedFormHandler);  
+
+document 
+.querySelector('#add-medication')
+?.addEventListener('click', addMedFormHandler);
 
 
 document
