@@ -7,7 +7,7 @@ const bodyText = document.querySelector("#botBody")
 
 // Bot responses 
 const botResponses = ["Why are you asking me this?", "Ok but did you know sunshine is bright?.. huh?", "I'm but a humble service bot. I know not.", "Beep boop", "Ok but what if we didn't do that?", "I can press buttons too!", "Stop that", "Weeeeeeeee"];
-const redirectResponses = ["Dashboard... dashboard? DASHBOARD!!", "Let's go home..", "Taking you to edit your medications.", "Let's add something new.", "Going to login. Beep."];
+const redirectResponses = ["Dashboard... dashboard? DASHBOARD!!", "Let's go home..", "Time for an update? Let's go!", "Taking you to edit your medications.", "Let's add something new.", "Going to login. Beep."];
 
 // Check query and response accordingly
 const botResponse = (query) => {
@@ -21,39 +21,58 @@ const botResponse = (query) => {
     let customBotResponse = false;
     let userquery = query.split(" ");
     const randomize = Math.floor(Math.random() * botResponses.length);
-    
-    for (let botResponse of redirectResponses) {
-        let botResArr = botResponse.split(" ")
-        
-        if (userquery.includes("dashboard")) {
-            customBotResponse = botResArr;
-        } else if (userquery.includes("login")) {
-            customBotResponse = botResArr;
-        } else if (userquery.includes("update")) {
-            customBotResponse = botResArr;
-        } else if (userquery.includes("add")) {
-            customBotResponse = botResArr;
-        } else if (userquery.includes("edit")) {
-            customBotResponse = botResArr;
-        } else if (userquery.includes("home")) {
-            customBotResponse = botResArr;
-        }
+
+    // For each piece of input from the user query, check each word minus any special characters.
+    // If any of those words matches with some a pre defined word, then loop through the special bot responses, formatted.
+    // If any of the bot responses match the user query, set it
+
+    const findMatch = (word) => {
+        redirectResponses.forEach(botsentence => {
+            let splitWords = botsentence.split(" ");
+            splitWords.forEach(botWord => {
+                let formatbotWord = botWord.replace(/[^a-z]/gi, '').toLowerCase()
+                if (formatbotWord === word) {
+                    
+                    customBotResponse = botsentence;
+                }
+            })
+        })
     }
-    
+
+    userquery.forEach(word => {
+        if (word) {
+            let formatWord = word.replace(/[^a-z]/gi, '').toLowerCase()
+
+            if (formatWord === "dashboard") {
+                findMatch("dashboard");
+            } else if (formatWord === "login") {
+                findMatch("login");
+            } else if (formatWord === "update") {
+                findMatch("update");
+            } else if (formatWord === "edit") {
+                findMatch("edit");
+            } else if (formatWord === "add") {
+                findMatch("add");
+            } else if (formatWord === "home") {
+                findMatch("home");
+            }
+        }
+    })
+   
     setTimeout(() => {
         if (!customBotResponse) {
             bodyText.innerHTML = bodyText.innerHTML + `<p class="botResponse"><strong>MedBot: </strong>${botResponses[randomize]} </p>`
         } else {
-            bodyText.innerHTML = bodyText.innerHTML + `<p class="botResponse"><strong>MedBot: </strong>${customBotResponse.join(" ")} </p>`
+            bodyText.innerHTML = bodyText.innerHTML + `<p class="botResponse"><strong>MedBot: </strong>${customBotResponse} </p>`
             setTimeout(() => {
                 // For each option on the menu, add the following relative replace
-                if (customBotResponse.join(" ") === "Taking you to edit your medications." || customBotResponse.join(" ") === "Dashboard... dashboard? DASHBOARD!!") {
+                if (customBotResponse === "Taking you to edit your medications." || customBotResponse === "Dashboard... dashboard? DASHBOARD!!" || customBotResponse === "Time for updates? Let's go!") {
                     window.location.replace('/dashboard')
-                } else if (customBotResponse.join(" ") === "Let's go home..") {
+                } else if (customBotResponse === "Let's go home..") {
                     window.location.replace('/')
-                } else if (customBotResponse.join(" ") === "Let's add something new.") {
+                } else if (customBotResponse === "Let's add something new.") {
                     window.location.replace('/medication')
-                } else if (customBotResponse.join(" ") === "Going to login. Beep.") {
+                } else if (customBotResponse === "Going to login. Beep.") {
                     window.location.replace('/login')
                 }
             }, 1500)

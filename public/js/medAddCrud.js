@@ -67,6 +67,7 @@ const addMedFormHandler = async (event) => {
 }
 
 
+
 const deleteBtn = document.querySelectorAll('.delete-addition-button');
 
 // If there are more than 5 custom information additions for medicine, hide the Add block for Additions
@@ -99,6 +100,7 @@ deleteBtn.forEach(function (button) {
       })
     })
   })
+})
 
 document
 .querySelector('#update-medication')
