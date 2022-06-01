@@ -1,5 +1,6 @@
 const medications = document.querySelectorAll(".medication");
 const headers = document.querySelector("#table-headers")
+let deleteButtons
 
 const additionsData = async () => {
     const response = await fetch('/api/medications/additions', {
@@ -98,10 +99,13 @@ const createCells = async () => {
         med.innerHTML = med.innerHTML + `<td style="background-color: #eaeaea; background: #eaeaea; border: none;"><a href="/medication/${medId}" class="function update">Update Row</a></td>`;
     })
 
-    const deleteButtons = document.querySelectorAll(".remove")
-    deleteButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            deleteMedication(button.getAttribute('id'))
+    deleteButtons = document.querySelectorAll(".remove")
+
+    deleteButtons.forEach(function (button) {
+        button.addEventListener('click', (e) => {
+            e.preventDefault()
+            let id = e.target.getAttribute("id")
+            deleteMedication(id)
         })
     })
 }
@@ -110,7 +114,6 @@ const deleteMedication = async (id) => {
 
     const response = await fetch(`/api/medications/${id}`, {
         method: 'DELETE',
-        headers: { 'Content-Type': 'application/json' },
     })
 
     if (response.ok) {

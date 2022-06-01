@@ -3,6 +3,7 @@
     display: flex;
     justify-content: center;
     margin: 20px 0;
+    height: 73vh;
 }
 #dashboard-container table {
     box-shadow: 0 1px 2px 2px black

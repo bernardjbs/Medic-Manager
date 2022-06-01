@@ -59,7 +59,7 @@ const addMedFormHandler = async (event) => {
   });
 
   if (response.ok) {
-    alert("Add successful")
+    window.location.replace('/dashboard')
   }
   else {
     alert("Add Failed")
@@ -83,7 +83,7 @@ deleteBtn.forEach(function (button) {
     });
 
     if (response.ok) {
-      alert('Your Additional info for medication has successfully been deleted');
+      window.location.replace(window.location.pathname)
     } else {
       alert('Failed to delete info for medication');
     }
@@ -91,10 +91,11 @@ deleteBtn.forEach(function (button) {
 });
 
 const addAdditionFormHandler = async (event) => {
+  event.preventDefault()
   const label = document.querySelector('#add-addition-label').value.trim();
   const value = document.querySelector('#add-addition-value').value.trim();
-  const addFormEl = document.querySelector('.add-addition');
-  const medication_id = addFormEl.dataset.medicationId;
+  const medication_id = window.location.pathname.slice(12);
+  
   const response = await fetch(`/api/additions`, {
     method: 'POST',
     body: JSON.stringify({
@@ -108,12 +109,46 @@ const addAdditionFormHandler = async (event) => {
   });
 
   if (response.ok) {
-    alert("Add successful")
+    window.location.replace(window.location.pathname)
   }
   else {
     alert("Add Failed")
   }
 };
+
+const updateBtn = document.querySelectorAll('.update-addition-button');
+const labelValues = document.querySelectorAll(".update-addition-value");
+console.log(labelValues)
+updateBtn.forEach(async function(button) {
+  button.addEventListener('click', async (e) => {
+    e.preventDefault()
+    let newValue
+    Array.prototype.slice.call(labelValues).forEach(value => {
+      if (value.value) {
+        newValue = value.value
+      }
+    })
+    const value = newValue
+    const medication_id = window.location.pathname.slice(12);
+    const id = button.dataset.additionId
+    const response = await fetch(`/api/additions/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify({
+        value,
+        medication_id,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+
+    if (response) {
+      window.location.replace(window.location.pathname)
+    } else {
+      alert("Update Failed")
+    }
+  })
+})
 
 document
   .querySelector('#update-medication')
@@ -164,4 +199,3 @@ document
 
 //   });
 // });
-

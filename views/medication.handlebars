@@ -10,7 +10,7 @@
       </div>
       <div class="form-group">
         <label for="med_price">Price:</label>
-        <input class="form-input" type="text" id="med_price" {{#if id}} value="{{med_price}}" {{/if}}name="med_price" />
+        <input class="form-input" type="number" id="med_price" {{#if id}} value="{{med_price}}" {{/if}}name="med_price" />
       </div>
       <div class="form-group">
         <label for="med_type">Type:</label>
@@ -37,7 +37,9 @@
   </form>
 
   {{!-- Add additions information from handlebars --}}
+  {{#if id}}
   {{> additions}}
+  {{/if}}
 </section>
 
 <script src="/js/medAddCrud.js"></script>

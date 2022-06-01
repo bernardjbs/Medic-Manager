@@ -7,44 +7,24 @@ const AdditionData = [
     value: 'Mt. Lawley',
   },
   {
-    medication_id: 1,
+    medication_id: 2,
     label: 'Frequency',
     value: 'Twice a Day',
   },
   {
-    medication_id: 1,
+    medication_id: 3,
     label: 'When',
     value: 'After Meal',
   },
   {
-    medication_id: 2,
+    medication_id: 4,
     label: 'Side effects',
     value: 'Dizzy',
   },
   {
-    medication_id: 3,
+    medication_id: 5,
     label: 'Treatment Until',
     value: 'Lifetime',
-  },
-  {
-    medication_id: 3,
-    label: 'Pharmacy Email',
-    value: 'medic@pharm.com',
-  },
-  {
-    medication_id: 4,
-    label: 'Generic Brand',
-    value: 'Yes',
-  },
-  {
-    medication_id: 4,
-    label: 'Medicine Time',
-    value: 'Morning',
-  },
-  {
-    medication_id: 5,
-    label: 'Conflict Medicine',
-    value: 'Panadol',
   },
 ];
 
