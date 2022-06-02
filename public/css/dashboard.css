@@ -56,9 +56,9 @@
     font-weight: bold;
     /* Created with https://www.css-gradient.com */
     background: #CCF3FF;
-    background: -webkit-linear-gradient(top left, rgba(204, 243, 255, .3), rgba(112, 244, 254, .3));
-    background: -moz-linear-gradient(top left, rgba(204, 243, 255, .3), rgba(112, 244, 254, .3));
-    background: linear-gradient(to bottom right, rgba(204, 243, 255, .3), rgba(112, 244, 254, .3));
+    background: -webkit-linear-gradient(top left, rgba(204, 243, 255, .9), rgba(112, 244, 254, .9));
+    background: -moz-linear-gradient(top left, rgba(204, 243, 255, .9), rgba(112, 244, 254, .9));
+    background: linear-gradient(to bottom right, rgba(204, 243, 255, .9), rgba(112, 244, 254, .9));
 }
 
 #dashboard-container a.function.update {
