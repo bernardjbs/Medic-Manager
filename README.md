@@ -122,16 +122,20 @@ Views ->
 Handlebars templating folder
 ```
 
-## Screenshot
-
-![alt text](https://github.com/bernardjbs/Medic-Manager/blob/main/public/assets/images/Screenshot%202022-06-01%20210620.jpg?raw=true)
-
 
 ## Contributors
 - Dave Plummer (https://github.com/origin-42)
 - Bernard Sin Fat (https://github.com/bernardjbs)
 - Mon Levey (https://github.com/monlevey)
 - Chi Doan (https://github.com/hergemony)
+
+## Extras
+
+## Screenshot
+
+[Homepage](https://desolate-brook-03478.herokuapp.com/)
+
+[![Homepage](https://github.com/bernardjbs/Medic-Manager/blob/main/public/assets/images/Screenshot%202022-06-01%20210620.jpg?raw=true)](https://desolate-brook-03478.herokuapp.com/)
 
 ## Questions
 Any questions please email info@medicmanager.com 
